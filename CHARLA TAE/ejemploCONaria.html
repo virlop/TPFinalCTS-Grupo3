@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo CON ARIA </title>
+</head>
+<body>
+  <h1>Ejemplo CON ARIA </h1>
+
+
+  <!-- Cambio de Color de Fondo CON ARIA -->
+  <button id="colorButton" aria-label="Cambiar Color de Fondo">Cambiar Color de Fondo</button> 
+  <div id="content" style="background-color: #f0f0f0; padding: 20px;">
+    <p>Este es un ejemplo de cambio de color de fondo CON ARIA.</p>
+  </div>
+
+  <!-- Menú Desplegable CON ARIA Corregido -->
+  <button id="menuButton" aria-expanded="false" aria-haspopup="menu">Abrir Menú</button> 
+  <ul id="menu" role="menu" aria-labelledby="menuButton" style="display: none;"> 
+    <li role="menuitem" tabindex="0">Opción 1</li>
+    <li role="menuitem" tabindex="0">Opción 2</li>
+    <li role="menuitem" tabindex="0">Opción 3</li>
+  </ul>
+
+  
+<br>
+  <img src="gatito.png" alt="Foto de un gatito" height="25%" width="25%">
+  <img src="borde.png" alt="Foto de un borde" aria-hidden="true" height="25%" width="25%">
+</br>
+  <script>
+    // Cambio de Color de Fondo CON ARIA
+    const colorButton = document.getElementById('colorButton');
+    const content = document.getElementById('content');
+    const colors = ['#FFD700', '#87CEEB', '#98FB98', '#FFA07A'];
+    let currentIndex = 0;
+
+    colorButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % colors.length;
+      const newColor = colors[currentIndex];
+      content.style.backgroundColor = newColor;
+      content.setAttribute('aria-live', 'polite');
+      content.textContent = `Fondo cambiado a color ${currentIndex + 1}`; // indica a que color se cambio el fondo
+    });
+
+    // Menú Desplegable CON ARIA Corregido
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+    let isMenuOpen = false;
+
+    menuButton.addEventListener('click', () => {
+      isMenuOpen = !isMenuOpen;
+      menuButton.setAttribute('aria-expanded', isMenuOpen.toString());
+      menu.style.display = isMenuOpen ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>

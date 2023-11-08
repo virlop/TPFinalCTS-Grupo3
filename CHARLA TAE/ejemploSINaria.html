@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplo SIN ARIA</title>
+</head>
+<body>
+  <h1>Ejemplo SIN ARIA</h1>
+
+  
+  <!-- Cambio de Color de Fondo SIN ARIA -->
+  <button id="colorButton">Cambiar Color de Fondo</button>
+  <div id="content" style="background-color: #f0f0f0; padding: 20px;">
+    <p>Este es un ejemplo de cambio de color de fondo SIN ARIA.</p>
+  </div>
+
+
+  <!-- Menú Desplegable SIN ARIA -->
+  <button id="menuButton">Abrir Menú</button>
+  <ul id="menu" style="display: none;">
+    <li>Opción 1</li>
+    <li>Opción 2</li>
+    <li>Opción 3</li>
+  </ul>
+
+<br>
+  <img src="gatito.png" height="25%" width="25%">
+  <img src="borde.png" height="25%" width="25%">
+</br>
+
+  <script>
+    // Cambio de Color de Fondo SIN ARIA
+    const colorButton = document.getElementById('colorButton');
+    const content = document.getElementById('content');
+    const colors = ['#FFD700', '#87CEEB', '#98FB98', '#FFA07A'];
+    let currentIndex = 0;
+
+    colorButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % colors.length;
+      const newColor = colors[currentIndex];
+      content.style.backgroundColor = newColor;
+    });
+
+    // Menú Desplegable SIN ARIA
+    const menuButton = document.getElementById('menuButton');
+    const menu = document.getElementById('menu');
+
+    let isMenuOpen = false;
+
+    menuButton.addEventListener('click', () => {
+      if (isMenuOpen) {
+        menu.style.display = 'none';
+      } else {
+        menu.style.display = 'block';
+      }
+      isMenuOpen = !isMenuOpen;
+    });
+  </script>
+</body>
+</html>
